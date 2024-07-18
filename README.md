@@ -1,4 +1,4 @@
-## Renting Application
+***Renting Application***
 # Overview
 This application allows users to rent various types of buildings such as apartments, separate houses, and shops. Each building has an address, name, size, and other necessary characteristics. Customers can rent multiple buildings, and a contract is generated for each rental, detailing the rental period, price, and other important information. Payments can be made using PayPal, Visa, or MasterCard.
 
