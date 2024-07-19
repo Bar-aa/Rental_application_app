@@ -5,7 +5,7 @@ This application allows users to rent various types of buildings such as apartme
 # Features
 Building Types: Rent apartments, separate houses, and shops.
 Contracts: Automatically generate contracts for rentals.
-Payments: Pay using PayPal, Visa, or MasterCard.
+Payments: Pay using PayPal, Cash, or Credit Card.
 
 # Design Principles
 The application uses key object-oriented principles such as inheritance, abstraction, polymorphism, aggregation, and composition.
