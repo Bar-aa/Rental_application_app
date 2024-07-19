@@ -12,16 +12,19 @@ abstract class Building {
     private String name;
     private Address address;
     private float size;
+    private float price ;
+    
     private boolean rented;
     
-    public Building(String name,Address address,float size){
+    public Building(String name,Address address,float size,float price){
         this.name=name;
         this.address=address;
         this.size=size;
         this.rented=false;
+        this.price=price;
     }
     
-    public abstract void rent(Customer customer, int rentalPeriod, float price ,String paymentType);
+    public abstract void rent(Customer customer, int rentalPeriod,String paymentType);
     
     public String getName() {
         return name;
@@ -54,7 +57,13 @@ abstract class Building {
     public void setRented(boolean rented) {
         this.rented = rented;
     }
-    
+        public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
     protected Payment determinePaymentMethod(String paymentType ){
         if(paymentType == null){
             return new CashPayment();
@@ -62,6 +71,7 @@ abstract class Building {
         return switch (paymentType) {
             case "Cash" -> new CashPayment();
             case "Credit" -> new CreditCardPayment();
+            case "paypal" -> new PayPalPayment();    
             default -> new CashPayment();
         };
     }

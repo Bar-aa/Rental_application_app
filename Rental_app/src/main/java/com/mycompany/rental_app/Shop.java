@@ -13,22 +13,22 @@ public class Shop extends Building{
     private float storefrontSize;
     private List<String> amenities;
     
-    public Shop(String name, Address address ,float size,float storefrontSize,List<String> amenities,RentalManager rentalManager){
-        super (name ,address, size);
+    public Shop(String name, Address address ,float size,float storefrontSize,List<String> amenities,RentalManager rentalManager,float price){
+        super (name ,address, size, price);
         this.amenities=amenities;
         this.storefrontSize=storefrontSize;
         rentalManager.addBuilding(this);
     }
     
     @Override
-    public void rent(Customer customer, int rentalPeriod, float price , String paymentType){
+    public void rent(Customer customer, int rentalPeriod, String paymentType){
         if (isRented()){
             System.err.println("Shop is already rented.");
             return;
         }
         Payment paymentMethod = determinePaymentMethod(paymentType);
         
-        Contract contract = new Contract (customer, this,rentalPeriod ,price ,paymentMethod);
+        Contract contract = new Contract (customer, this,rentalPeriod  ,paymentMethod);
         customer.addRentedBuilding(this);
         contract.processPayment();
         setRented(true);

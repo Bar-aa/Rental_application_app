@@ -12,15 +12,14 @@ public class Contract {
     private Customer customer;
     private Building building;
     private int rentalPeriod;
-    private float price ;
+    
     private Payment paymentMethod;
     
     
     
-    public Contract (Customer customer ,Building building, int rentalPeriod,float price , Payment paymentMethod){
+    public Contract (Customer customer ,Building building, int rentalPeriod, Payment paymentMethod){
         this.building=building;
         this.customer=customer;
-        this.price=price;
         this.rentalPeriod=rentalPeriod;
         this.paymentMethod=paymentMethod;
         
@@ -50,13 +49,7 @@ public class Contract {
         this.rentalPeriod = rentalPeriod;
     }
 
-    public float getPrice() {
-        return price;
-    }
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
 
     public Payment getPaymentMethod() {
         return paymentMethod;
@@ -69,7 +62,7 @@ public class Contract {
 
     
     public void processPayment(){
-        paymentMethod.processPayment(price);
+        paymentMethod.processPayment(building.getPrice());
     }
     
     @Override
@@ -80,7 +73,7 @@ public class Contract {
         sb.append("  Customer: ").append(customer.getName()).append(",\n");
         sb.append("  Building: ").append(building.getName()).append(",\n");
         sb.append("  Renta Period: ").append(rentalPeriod).append(",\n");
-        sb.append("  Price: ").append(price).append(",\n");
+        sb.append("  Price: ").append(building.getPrice()).append(",\n");
         sb.append("}");
         return sb.toString();
     }

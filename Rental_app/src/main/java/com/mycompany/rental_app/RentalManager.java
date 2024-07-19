@@ -20,7 +20,7 @@ public class RentalManager {
     public void addBuilding(Building building){
         buildings.add(building);
     }
-    public List<Building> getAllBuilding(){
+    public List<Building> getAllBuildings(){
         return buildings;
     }
  
@@ -44,5 +44,14 @@ public class RentalManager {
         }
         return availableBuildings;
         
+    }
+
+    public Building findBuildingByName(String buildingName) {
+        for (Building building : buildings) {
+            if (building.getName().equalsIgnoreCase(buildingName)) {
+                return building;
+            }
+        }
+        return null;
     }
 }
