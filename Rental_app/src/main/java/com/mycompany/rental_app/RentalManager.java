@@ -20,6 +20,7 @@ public class RentalManager {
     public void addBuilding(Building building){
         buildings.add(building);
     }
+    
     public List<Building> getAllBuildings(){
         return buildings;
     }

@@ -41,6 +41,7 @@ public class Rental_app {
         System.out.print("Choose an option: ");
         
         int choice = getIntInput();
+        scanner.nextLine(); 
         
         switch (choice) {
             case 1:
@@ -75,7 +76,7 @@ public class Rental_app {
         while (isAdmin) {
             System.out.println("|************************|");
             System.out.println("|*******Admin Menu*******|");
-            System.out.println("|************************|\n\n");
+            System.out.println("|************************|");
             System.out.println("    1- Add New Building");
             System.out.println("    2- View All Buildings");
             System.out.println("    3- View Rented Buildings");
@@ -84,6 +85,7 @@ public class Rental_app {
             System.out.print("Choose an option: ");
             
             int choice = getIntInput();
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
@@ -118,6 +120,7 @@ public class Rental_app {
         System.out.print("Choose an option: ");
         
         int choice = getIntInput();
+        scanner.nextLine();
 
         switch (choice) {
             case 1:
@@ -154,7 +157,6 @@ public class Rental_app {
         
         Address address = new Address(street, city, state);
         House house = new House(name, address, size, floors, yardSize, rentalManager, price);
-        rentalManager.addBuilding(house);
         System.out.println("House added successfully.");
     }
 
@@ -180,7 +182,6 @@ public class Rental_app {
 
         Address address = new Address(street, city, state);
         Shop shop = new Shop(name, address, size, storefrontSize, amenities, rentalManager, price);
-        rentalManager.addBuilding(shop);
         System.out.println("Shop added successfully.");
     }
 
@@ -204,7 +205,6 @@ public class Rental_app {
         
         Address address = new Address(street, city, state);
         Apartment apartment = new Apartment(name, address, size, bedrooms, bathrooms, rentalManager, price);
-        rentalManager.addBuilding(apartment);
         System.out.println("Apartment added successfully.");
     }
 
@@ -239,7 +239,7 @@ public class Rental_app {
         while (true) {
             System.out.println("|************************|");
             System.out.println("|*****Customer Menu******|");
-            System.out.println("|************************|\n\n");
+            System.out.println("|************************|");
             System.out.println("    1- View Available Buildings");
             System.out.println("    2- Rent a Building");
             System.out.println("    3- View Rented Buildings");
@@ -247,6 +247,7 @@ public class Rental_app {
             System.out.print("Choose an option: ");
             
             int choice = getIntInput();
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
