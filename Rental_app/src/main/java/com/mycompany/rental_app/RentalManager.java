@@ -11,40 +11,42 @@ import java.util.List;
  * @author baraa
  */
 public class RentalManager {
-    private List <Building> buildings;
+    private List<Building> buildings;
+    private List<Owner> owners;
+    private List<Customer> customers;
     
-    public RentalManager(){
-        this.buildings=new ArrayList<>();
+    public RentalManager() {
+        this.buildings = new ArrayList<>();
+        this.owners = new ArrayList<>();
+        this.customers = new ArrayList<>();
     }
     
-    public void addBuilding(Building building){
+    public void addBuilding(Building building) {
         buildings.add(building);
     }
     
-    public List<Building> getAllBuildings(){
+    public List<Building> getAllBuildings() {
         return buildings;
     }
- 
     
-    public List<Building> getRentedBuildings(){
-        List<Building> rentedBuildings =new ArrayList<>();
-        for (Building building:buildings){
-            if (building.isRented()){
+    public List<Building> getRentedBuildings() {
+        List<Building> rentedBuildings = new ArrayList<>();
+        for (Building building : buildings) {
+            if (building.isRented()) {
                 rentedBuildings.add(building);
             }
         }
         return rentedBuildings;
     }
     
-    public List <Building> getAvailableBuildings(){
-        List<Building> availableBuildings =new ArrayList<>();
-        for (Building building:buildings){
-            if (!building.isRented()){
+    public List<Building> getAvailableBuildings() {
+        List<Building> availableBuildings = new ArrayList<>();
+        for (Building building : buildings) {
+            if (!building.isRented()) {
                 availableBuildings.add(building);
             }
         }
         return availableBuildings;
-        
     }
 
     public Building findBuildingByName(String buildingName) {
@@ -54,5 +56,37 @@ public class RentalManager {
             }
         }
         return null;
+    }
+    
+    public Owner findOrCreateOwner(String name, String contactInfo, String password) {
+        for (Owner owner : owners) {
+            if (owner.getName().equalsIgnoreCase(name) && owner.getPassword().equals(password)) {
+                return owner;
+            }
+        }
+        Owner newOwner = new Owner(name, contactInfo, password);
+        owners.add(newOwner);
+        return newOwner;
+    }
+    
+    public Owner findOwnerbyname(String name) {
+        for (Owner owner : owners) {
+            if (owner.getName().equalsIgnoreCase(name)) {
+                return owner;
+            }
+        }
+        System.out.print("There is no owner like this: ");
+        return null;
+    }
+    
+    public Customer findOrCreateCustomer(String name, String contactInfo, String password) {
+        for (Customer customer : customers) {
+            if (customer.getName().equalsIgnoreCase(name) && customer.getPassword().equals(password)) {
+                return customer;
+            }
+        }
+        Customer newCustomer = new Customer(name, contactInfo, password);
+        customers.add(newCustomer);
+        return newCustomer;
     }
 }

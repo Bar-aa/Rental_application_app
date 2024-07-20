@@ -12,8 +12,8 @@ public class Apartment extends Building {
     private int bedrooms;
     private int bathrooms;
     
-    public Apartment (String name, Address address ,float size,int bedrooms,int bathrooms,RentalManager rentalManager , float price ){
-        super (name ,address, size, price);
+    public Apartment (String name, Address address ,float size,int bedrooms,int bathrooms,RentalManager rentalManager , float price,Owner owner ){
+        super (name ,address, size, price,owner);
         this.bathrooms=bathrooms;
         this.bedrooms=bedrooms;
         rentalManager.addBuilding(this);

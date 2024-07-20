@@ -9,19 +9,22 @@ package com.mycompany.rental_app;
  * @author baraa
  */
 abstract class Building {
+    private Owner owner;
     private String name;
     private Address address;
     private float size;
     private float price ;
-    
     private boolean rented;
     
-    public Building(String name,Address address,float size,float price){
+    
+    
+    public Building(String name,Address address,float size,float price,Owner owner){
         this.name=name;
         this.address=address;
         this.size=size;
         this.rented=false;
         this.price=price;
+        this.owner = owner;
     }
     
     public abstract void rent(Customer customer, int rentalPeriod,String paymentType);
@@ -32,6 +35,13 @@ abstract class Building {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     public Address getAddress() {

@@ -12,11 +12,12 @@ public class House extends Building{
     private int floors;
     private float yardsize;
     
-    public House(String name, Address address ,float size,int floors,float yardsize, RentalManager rentalManager,float price){
-        super (name ,address, size, price);
-        this.floors=floors;
-        this.yardsize=yardsize;
+    public House(String name, Address address, float size, int floors, float yardSize, RentalManager rentalManager, float price, Owner owner) {
+        super(name, address, size, price, owner);
+        this.floors = floors;
+        this.yardsize = yardSize;
         rentalManager.addBuilding(this);
+        owner.addOwnedBuilding(this);
     }
     
     @Override

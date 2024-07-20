@@ -13,8 +13,8 @@ public class Shop extends Building{
     private float storefrontSize;
     private List<String> amenities;
     
-    public Shop(String name, Address address ,float size,float storefrontSize,List<String> amenities,RentalManager rentalManager,float price){
-        super (name ,address, size, price);
+    public Shop(String name, Address address ,float size,float storefrontSize,List<String> amenities,RentalManager rentalManager,float price,Owner owner){
+        super (name ,address, size, price, owner);
         this.amenities=amenities;
         this.storefrontSize=storefrontSize;
         rentalManager.addBuilding(this);

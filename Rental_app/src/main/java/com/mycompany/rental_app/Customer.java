@@ -15,7 +15,7 @@ public class Customer {
     private String contactInfo;// i can chang it to be class by itself//
     private List<Building> rentedBuildings = new ArrayList<>();
     
-    public Customer(String name,String contactInfo){
+    public Customer(String name, String contactInfo, String password){
         this.name=name;
         this.contactInfo=contactInfo;
     }
@@ -46,5 +46,9 @@ public class Customer {
 
     public void setRentedBuildings(List<Building> rentedBuildings) {
         this.rentedBuildings = rentedBuildings;
+    }
+
+    Object getPassword() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
