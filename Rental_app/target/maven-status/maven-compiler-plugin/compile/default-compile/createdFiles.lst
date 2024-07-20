@@ -1,5 +1,6 @@
 com\mycompany\rental_app\CreditCardPayment.class
 com\mycompany\rental_app\Rental_app.class
+com\mycompany\rental_app\Owner.class
 com\mycompany\rental_app\PayPalPayment.class
 com\mycompany\rental_app\Payment.class
 com\mycompany\rental_app\Shop.class

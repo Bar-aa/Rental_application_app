@@ -37,7 +37,7 @@ public class Rental_app {
 
         System.out.println("    1- Admin Menu");
         System.out.println("    2- Customer Menu");
-        System.out.println("    2- Owner Menu");
+        System.out.println("    3- Owner Menu");
         System.out.println("    0- Exit");
         System.out.print("Choose an option: ");
         
@@ -166,63 +166,75 @@ public class Rental_app {
     }
 
     private static void addHouse() {
-        System.out.print("Enter the Building information : ");
-        System.out.print("Enter name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter street: ");
-        String street = scanner.nextLine();
-        System.out.print("Enter city: ");
-        String city = scanner.nextLine();
-        System.out.print("Enter state: ");
-        String state = scanner.nextLine();
-        System.out.print("Enter size: ");
-        float size = getFloatInput();
-        System.out.print("Enter rental price: ");
-        float price = getFloatInput();
-        System.out.print("Enter number of floors: ");
-        int floors = getIntInput();
-        System.out.print("Enter yard size: ");
-        float yardSize = getFloatInput();
-        
-        System.out.print("Enter the Owner information : ");
-        System.out.print("Enter owner name: ");
-        String ownerName = scanner.nextLine();
-        Owner owner = rentalManager.findOwnerbyname(ownerName);
-        
-        Address address = new Address(street, city, state);
-        House house = new House(name, address, size, floors, yardSize, rentalManager, price,owner);
-        System.out.println("House added successfully.");
+    System.out.print("Enter the Building information : ");
+    System.out.print("Enter name: ");
+    String name = scanner.nextLine();
+    System.out.print("Enter street: ");
+    String street = scanner.nextLine();
+    System.out.print("Enter city: ");
+    String city = scanner.nextLine();
+    System.out.print("Enter state: ");
+    String state = scanner.nextLine();
+    System.out.print("Enter size: ");
+    float size = getFloatInput();
+    System.out.print("Enter rental price: ");
+    float price = getFloatInput();
+    System.out.print("Enter number of floors: ");
+    int floors = getIntInput();
+    System.out.print("Enter yard size: ");
+    float yardSize = getFloatInput();
+    
+    System.out.print("Enter the Owner information : ");
+    System.out.print("Enter owner name: ");
+    String ownerName = scanner.nextLine();
+    Owner owner = rentalManager.findOwnerByName(ownerName);
+    
+    if (owner == null) {
+        System.out.println("There is no owner with the name: " + ownerName);
+        return; 
     }
+    
+    Address address = new Address(street, city, state);
+    House house = new House(name, address, size, floors, yardSize, rentalManager, price, owner);
+    System.out.println("House added successfully.");
+}
+
 
     private static void addShop() {
-        System.out.print("Enter name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter street: ");
-        String street = scanner.nextLine();
-        System.out.print("Enter city: ");
-        String city = scanner.nextLine();
-        System.out.print("Enter state: ");
-        String state = scanner.nextLine();
-        System.out.print("Enter size: ");
-        float size = getFloatInput();
-        System.out.print("Enter rental price: ");
-        float price = getFloatInput();
-        System.out.print("Enter storefront size: ");
-        float storefrontSize = getFloatInput();
-        scanner.nextLine();  // Consume newline
-        System.out.print("Enter amenities (comma separated): ");
-        String amenitiesInput = scanner.nextLine();
-        List<String> amenities = Arrays.asList(amenitiesInput.split(","));
-        
-        System.out.print("Enter the Owner information : ");
-        System.out.print("Enter owner name: ");
-        String ownerName = scanner.nextLine();
-        Owner owner = rentalManager.findOwnerbyname(ownerName);
+    System.out.print("Enter name: ");
+    String name = scanner.nextLine();
+    System.out.print("Enter street: ");
+    String street = scanner.nextLine();
+    System.out.print("Enter city: ");
+    String city = scanner.nextLine();
+    System.out.print("Enter state: ");
+    String state = scanner.nextLine();
+    System.out.print("Enter size: ");
+    float size = getFloatInput();
+    System.out.print("Enter rental price: ");
+    float price = getFloatInput();
+    System.out.print("Enter storefront size: ");
+    float storefrontSize = getFloatInput();
+    scanner.nextLine();  // Consume newline
+    System.out.print("Enter amenities (comma separated): ");
+    String amenitiesInput = scanner.nextLine();
+    List<String> amenities = Arrays.asList(amenitiesInput.split(","));
+    
+    System.out.print("Enter the Owner information : ");
+    System.out.print("Enter owner name: ");
+    String ownerName = scanner.nextLine();
+    Owner owner = rentalManager.findOwnerByName(ownerName);
 
-        Address address = new Address(street, city, state);
-        Shop shop = new Shop(name, address, size, storefrontSize, amenities, rentalManager, price,owner);
-        System.out.println("Shop added successfully.");
+    if (owner == null) {
+        System.out.println("There is no owner with the name: " + ownerName);
+        return; // Exit the method if the owner is not found
     }
+
+    Address address = new Address(street, city, state);
+    Shop shop = new Shop(name, address, size, storefrontSize, amenities, rentalManager, price, owner);
+    System.out.println("Shop added successfully.");
+}
+
 
     private static void addApartment() {
         System.out.print("Enter name: ");
@@ -245,11 +257,15 @@ public class Rental_app {
         System.out.print("Enter the Owner information : ");
         System.out.print("Enter owner name: ");
         String ownerName = scanner.nextLine();
-        Owner owner = rentalManager.findOwnerbyname(ownerName);
+        scanner.nextLine();
         Address address = new Address(street, city, state);
-        
-        Apartment apartment = new Apartment(name, address, size, bedrooms, bathrooms, rentalManager, price,owner);
-        System.out.println("Apartment added successfully.");
+        Owner owner = rentalManager.findOwnerByName(ownerName);
+        if (owner == null) {
+            System.out.println("There is no owner with the name: " + ownerName);
+        } else {
+            Apartment apartment = new Apartment(name, address, size, bedrooms, bathrooms, rentalManager, price,owner);
+            System.out.println("Apartment added successfully.");
+        }    
     }
 
     private static void viewAllBuildings() {
@@ -455,7 +471,6 @@ private static void addHouseByOwner(Owner owner) {
     
     Address address = new Address(street, city, state);
     House house = new House(name, address, size, floors, yardSize, rentalManager, price,owner);
-    rentalManager.addBuilding(house);
     owner.addOwnedBuilding(house);
     System.out.println("House added successfully.");
 }
@@ -482,7 +497,7 @@ private static void addShopByOwner(Owner owner) {
 
     Address address = new Address(street, city, state);
     Shop shop = new Shop(name, address, size, storefrontSize, amenities, rentalManager, price,owner);
-    rentalManager.addBuilding(shop);
+
     owner.addOwnedBuilding(shop);
     System.out.println("Shop added successfully.");
 }
@@ -507,7 +522,6 @@ private static void addApartmentByOwner(Owner owner) {
     
     Address address = new Address(street, city, state);
     Apartment apartment = new Apartment(name, address, size, bedrooms, bathrooms, rentalManager, price,owner);
-    rentalManager.addBuilding(apartment);
     owner.addOwnedBuilding(apartment);
     System.out.println("Apartment added successfully.");
 }

@@ -69,13 +69,13 @@ public class RentalManager {
         return newOwner;
     }
     
-    public Owner findOwnerbyname(String name) {
+    public Owner findOwnerByName(String name) {
         for (Owner owner : owners) {
             if (owner.getName().equalsIgnoreCase(name)) {
                 return owner;
             }
         }
-        System.out.print("There is no owner like this: ");
+        System.out.println("There is no owner with the name: " + name);
         return null;
     }
     
