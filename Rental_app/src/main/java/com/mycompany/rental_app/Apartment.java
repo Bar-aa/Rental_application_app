@@ -34,6 +34,24 @@ public class Apartment extends Building {
         System.out.println("Apartment rented to "+customer. getName());
     }
 
+    public int getBedrooms() {
+        return bedrooms;
+    }
+
+    public void setBedrooms(int bedrooms) {
+        this.bedrooms = bedrooms;
+    }
+
+    public int getBathrooms() {
+        return bathrooms;
+    }
+
+    public void setBathrooms(int bathrooms) {
+        this.bathrooms = bathrooms;
+    }
+    
+    
+
     
   
 
